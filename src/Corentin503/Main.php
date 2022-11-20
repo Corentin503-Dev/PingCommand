@@ -11,6 +11,7 @@ class Main extends PluginBase
     public function onEnable(): void
     {
         self::$main = $this;
+        $this->saveDefaultConfig();
         $this->getServer()->getCommandMap()->register("", new Ping());
     }
 
