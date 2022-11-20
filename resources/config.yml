@@ -1,0 +1,1 @@
+permission: true #false = all can use command /ping, true = ping.use is required
