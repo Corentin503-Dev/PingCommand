@@ -18,10 +18,12 @@ class Ping extends Command
         $config = Main::getInstance()->getConfig();
         $player = Server::getInstance()->getPlayerByPrefix($args[0]);
 
-        if ($config->get("permission") === true) {
-            if ($sender->hasPermission("ping.use")) {
-                $sender->sendMessage("§9Ping for {$player->getName()} is §f{$player->getNetworkSession()->getPing()}§9 ms !");
-            }
-        } else $sender->sendMessage("§9Ping for {$player->getName()} is §f{$player->getNetworkSession()->getPing()}§9 ms !");
+        if (!is_null($args[0])) {
+            if ($config->get("permission") === true) {
+                if ($sender->hasPermission("ping.use")) {
+                    $sender->sendMessage("§9Ping for {$player->getName()} is §f{$player->getNetworkSession()->getPing()}§9 ms !");
+                }
+            } else $sender->sendMessage("§9Ping for {$player->getName()} is §f{$player->getNetworkSession()->getPing()}§9 ms !");
+        } else $sender->sendMessage("§cArgument is empty");
     }
 }
